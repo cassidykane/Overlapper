@@ -10,10 +10,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="213dp"
         android:text="OVERLAPPER"
         android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,76 +20,75 @@
         android:id="@+id/secondUrlEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
-        android:layout_marginBottom="166dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="61dp"
         android:ems="10"
-        android:hint="Enter first URL"
+        android:hint="Enter second URL"
         android:inputType="textUri"
-        app:layout_constraintBottom_toBottomOf="@+id/secondUrlSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/firstUrlEditText" />
 
     <EditText
         android:id="@+id/firstUrlEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="275dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="62dp"
         android:ems="10"
-        android:hint="Enter second URL"
+        android:hint="Enter first URL"
         android:inputType="textUri"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/combineButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:text="Combine"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="110dp"
         android:onClick="combineClick"
-        app:layout_constraintStart_toStartOf="@+id/secondUrlSaveButton"
-        app:layout_constraintTop_toBottomOf="@+id/secondUrlSaveButton" />
+        android:text="Combine"
+        app:layout_constraintStart_toEndOf="@+id/secondUrlSaveButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Spinner
         android:id="@+id/firstUrlSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/secondUrlEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstUrlEditText" />
 
     <Spinner
         android:id="@+id/secondUrlSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/firstUrlEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondUrlEditText" />
 
     <Button
         android:id="@+id/firstUrlSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="223dp"
+        android:layout_marginTop="61dp"
         android:onClick="saveUrlClick"
         android:text="Save as"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondUrlEditText" />
+        app:layout_constraintStart_toStartOf="@+id/firstUrlEditText"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/secondUrlSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="56dp"
         android:onClick="saveUrlClick"
         android:text="Save as"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstUrlEditText" />
+        app:layout_constraintStart_toEndOf="@+id/secondUrlEditText"
+        app:layout_constraintTop_toBottomOf="@+id/firstUrlSaveButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

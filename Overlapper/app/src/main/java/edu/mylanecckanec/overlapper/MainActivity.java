@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
     private SharedPreferences savedValues;
     private Map<String, ?> savedUrlStorageMap;
     private Map<String, String> savedUrlMap;
+    public static final String FIRST_URL = "firstUrl";
+    public static final String SECOND_URL = "secondUrl";
+    public static final int REQ_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +53,37 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
         firstUrlSaveButton = (Button) findViewById(R.id.firstUrlSaveButton);
         secondUrlSaveButton = (Button) findViewById(R.id.secondUrlSaveButton);
         combineButton = (Button) findViewById(R.id.combineButton);
-        savedUrlMap = new HashMap<String, String>();
 
+        savedUrlMap = new HashMap<String, String>();
         savedValues = getSharedPreferences("SavedValues",MODE_PRIVATE);
+
         updateSavedUrls();
         renderSavedUrls();
     }
 
+    @Override
+    public void onPause() {
+        Editor editor = savedValues.edit();
+
+        String firstUrl = firstUrlEditText.getText().toString();
+        String secondUrl = secondUrlEditText.getText().toString();
+
+        if (!firstUrl.isEmpty())
+            editor.putString("firstUrl",firstUrl);
+        if (!secondUrl.isEmpty())
+            editor.putString("secondUrl",secondUrl);
+
+        editor.commit();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        firstUrlEditText.setText(savedValues.getString("firstUrl",""));
+        firstUrlEditText.setText(savedValues.getString("secondUrl",""));
+    }
 
     public void saveUrlClick(final View button) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -121,9 +149,7 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
                                int pos, long id) {
         String urlName = parent.getItemAtPosition(pos).toString();
         String url = savedValues.getString(urlName, "no URL found");//savedUrlMap.get(urlName);
-        Log.e(savedValues.getString(urlName, "no URL found"),"URL HERE!!!!");
-        Log.e("HEY","WTF");
-        Log.e(savedUrlMap.get(urlName),"URL HERE!!!!");
+
         if (parent.getId() == R.id.firstUrlSpinner) {
             firstUrlEditText.setText(url);
         } else {
@@ -134,5 +160,16 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
 
     public void onNothingSelected(AdapterView<?> parent) {
         // do nothing
+    }
+
+    public void combineClick(View view) {
+        String firstUrl = firstUrlEditText.getText().toString();
+        String secondUrl = secondUrlEditText.getText().toString();
+        if (!firstUrl.isEmpty() && !secondUrl.isEmpty()) {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            intent.putExtra(FIRST_URL, firstUrl);
+            intent.putExtra(SECOND_URL, secondUrl);
+            startActivityForResult(intent,REQ_ID);
+        }
     }
 }

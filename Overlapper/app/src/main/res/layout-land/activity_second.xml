@@ -7,18 +7,19 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="323dp"
-        android:layout_height="485dp"
+        android:layout_width="510dp"
+        android:layout_height="304dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/opacitySeekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.106" />
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="323dp"
-        android:layout_height="485dp"
+        android:layout_width="510dp"
+        android:layout_height="306dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/opacitySeekBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,24 +31,24 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:onClick="backClick"
         android:text="Back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opacitySeekBar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <SeekBar
         android:id="@+id/opacitySeekBar"
         android:layout_width="312dp"
         android:layout_height="27dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="326dp"
         android:progress="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView1"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
